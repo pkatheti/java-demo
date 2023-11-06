@@ -7,6 +7,7 @@ EXPOSE 8080
 
 COPY target/JavaCrudApis-0.0.1-SNAPSHOT.jar ${HOME}/JavaCrudApis-0.0.1-SNAPSHOT.jar
 
+<<<<<<< Updated upstream
 ENTRYPOINT ["java -jar ${HOME}/JavaCrudApis-0.0.1-SNAPSHOT.jar"]
 ## Use an official OpenJDK 11 image as the base image
 #FROM openjdk:11-jre-slim
@@ -32,3 +33,6 @@ ENTRYPOINT ["java -jar ${HOME}/JavaCrudApis-0.0.1-SNAPSHOT.jar"]
 #COPY --from=build $JAR_FILE /app/runner.jar
 #EXPOSE 8080
 #ENTRYPOINT java -jar /app/runner.jar
+=======
+ENTRYPOINT ["java -jar ${HOME}/JavaCrudApis-0.0.1-SNAPSHOT.jar"]
+>>>>>>> Stashed changes
