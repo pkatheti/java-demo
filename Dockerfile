@@ -4,14 +4,23 @@
 FROM openjdk:11-jre-slim
 
 # Set the working directory in the container
-WORKDIR /app
 
-# Copy the JAR file from the "target" directory of your project into the container
-COPY /app/target/JavaCrudApis-0.0.1-SNAPSHOT.jar app.jar
 
-# Expose port 8080 for the application
+#
+# Build stage
+#
+FROM openjdk:11-jre-slim AS build
+ENV HOME=/usr/app
+RUN mkdir -p $HOME
+WORKDIR $HOME
+ADD . $HOME
+RUN --mount=type=cache,target=/root/.m2 ./mvnw -f $HOME/pom.xml clean package
+
+#
+# Package stage
+#
+FROM openjdk:11-jre-slim
+ARG JAR_FILE=/usr/app/target/*.jar
+COPY --from=build $JAR_FILE /app/runner.jar
 EXPOSE 8080
-
-# Define the entry point command to run the Spring Boot application
-CMD ["java", "-jar", "app.jar"]
-
+ENTRYPOINT java -jar /app/runner.jar
