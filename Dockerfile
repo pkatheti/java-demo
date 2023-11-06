@@ -5,9 +5,9 @@ ENV HOME=/usr/app
 RUN mkdir -p ${HOME}
 EXPOSE 8080
 
-COPY target/javaCrudApis-0.0.1-SNAPSHOT.jar ${HOME}/javaCrudApis-0.0.1-SNAPSHOT.jar
+COPY target/JavaCrudApis-0.0.1-SNAPSHOT.jar ${HOME}/JavaCrudApis-0.0.1-SNAPSHOT.jar
 
-ENTRYPOINT ["java -jar ${HOME}/javaCrudApis-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java -jar ${HOME}/JavaCrudApis-0.0.1-SNAPSHOT.jar"]
 ## Use an official OpenJDK 11 image as the base image
 #FROM openjdk:11-jre-slim
 #
